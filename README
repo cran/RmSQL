@@ -2,6 +2,8 @@
 language and the mSQL database system and is Copyright (C) 1999, 2000 by 
 Torsten Hothorn <Torsten.Hothorn@rzmail.uni-erlangen.de>
 
+It depends on mSQL-2.0.8 (http://www.Hughes.com.au) or higher.
+
 This is very basic interface and more or less just a wrapper to the mSQL
 API, useful mainly for programming.  
 
