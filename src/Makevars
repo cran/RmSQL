@@ -1,2 +1,0 @@
-PKG_CFLAGS=-I/usr/local/Hughes/include -L/usr/local//Hughes/lib 
-PKG_LIBS=-lmsql -L/usr/local/Hughes/lib

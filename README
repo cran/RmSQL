@@ -35,12 +35,14 @@ GPL licenced but free of charge for universities and noncommercial orgs.
 
 2. install mSQL (see mSQL README and manual)
 
-3. if server and client are on the same host, unpack RmSQL-0.1.tar.gz in 
-$RHOME/library/, check ./RmSQL/src/Makevars for your mSQL-path and type 
-"R INSTALL RmSQL" as root. This should make RmSQL correct.
+3. if server and client are on the same host and mSQL is located in
+/usr/local/Hughes install RmSQL by
 
-4. if not, tell ./RmSQL/src/Makevars where to search for libmsql.a and
-msql.h (and copy them on the client machine). 
+hothorn@artemis:~ > R INSTALL RmSQL
+
+(yes, I added a configure script ;-)
+
+4. if not, set the environment variable LIBMSQL_DIR to the appropriate dirs 
 
 5. to run the crash example, create a database called "crash" by
 ">$MSQL_HOME/bin/msqladmin create crash" , copy ./RmSQL/Example/* into your
