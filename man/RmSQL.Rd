@@ -42,6 +42,8 @@ msqlListIndex(sock, tableName, index)
   \item{query}{a SQL statement}
   \item{dbName}{Name of the database to access}
   \item{pos}{a position number when fetching a row or field}
+  \item{tableName}{name of a special table}
+  \item{index}{name of a special index}
 }
 \description{	
     \code{RmSQL} implements a low-level interface between \R and mSQL 2.0 by
