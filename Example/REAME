@@ -1,0 +1,29 @@
+
+This is a little example using a little dataset which I found on my harddisk
+by random :-)
+
+The file crash.txt contains data from car accidents happend in 1980-1982 in
+Nordrhein-Westfalen, a territory of germany.
+
+6 variables are listed:
+
+First, four variable of the drivers having an accident:
+ 
+age:	1: younger then 25, 2: 25-60 years old, older the 60  
+sex:	0: female driver, 1: male driver
+alc:	0: driver not drunken, 1: driver drunken 
+street:	kind of street: 1: streets in town, 2: country road, 3: autobahn
+
+And second, the kind and cause of accident:
+
+bcrash:	bad crash: number of accidents with combination (age, sex, alc, street), which
+	were caused by speeding, risky driving and so on
+gcrash: good crash: number of accidents not caused by speeding or risky
+	driving with combination (age, sex, alc, street). 
+
+crash.R reads the data, defines a table and saves the data in the database
+system. The we can "ask questions" using SQL-statements. Of cource, all this
+can be done with dataframes, but not more complex things like joins etc. One
+should look at the comments in crash.R to see RmSQL working.
+
+ 

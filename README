@@ -1,0 +1,56 @@
+'RmSQL' is an R package which implements an interface between the R
+language and the mSQL database system and is Copyright (C) 1999 by 
+Torsten Hothorn <hothorn@amadeus.statistik.uni-dortmund.de>
+
+*************************************************************************
+
+THIS IS ALPHA 1 CODE. Detailed testing has to be done and there is still 
+a lot of functionality missing. 
+
+*************************************************************************
+
+'RmSQL' is free software; you can redistribute  it and/or modify it under 
+the terms of the GNU General Public License as published by the Free 
+Software Foundation; either version 2, or (at your option) any later 
+version.
+
+`RmSQL' is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+A copy of the GNU General Public License is available on the World Wide
+Web at http://www.gnu.org/copyleft/gpl.html.  You can also obtain it by
+writing to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge,
+MA 02139, USA.
+
+
+'mSQL' is Copyright 1993,1994 David J. Hughes and is available from
+http://www.Hughes.com.au 
+
+*************************************************************************
+
+INSTALLATION:
+
+*************************************************************************
+
+1. get mSQL version => 2.0.8 from www.Hughes.com.au. Note that mSQL is NOT
+GPL licenced but free of charge for universities and noncommercial orgs. 
+
+2. install mSQL (see mSQL README and manual)
+
+3. if server and client are on the same host, unpack RmSQL-0.1.tar.gz in 
+$RHOME/library/, check ./RmSQL/src/Makefile for your mSQL-path and type 
+"R INSTALL RmSQL" as root. This should make RmSQL correct (make sure that
+SHLIBFLAGS are set correct) 
+
+4. if not, copy the mSQL include and lib dirs on the client and change the
+Makefile
+
+5. to run the crash example, create a database called "crash" by
+">$MSQL_HOME/bin/msqladmin create crash" , copy ./RmSQL/Example/* into your
+working directory and run R> source("crash.R"). If no error message is
+printed and sdata contains data, you are on :-)
+
+
+Please send comments, errors etc. to the author.
