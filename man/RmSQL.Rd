@@ -132,4 +132,4 @@ source and free of charge for universities and noncommercial organisations.
 # see ./RmSQL/Example/crash.R, you need a running msql2d
 }
 
-\keyword{database, SQL}
+\keyword{utilities}
