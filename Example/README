@@ -2,8 +2,8 @@
 This is a little example using a little dataset which I found on my harddisk
 by random :-)
 
-The file crash.txt contains data from car accidents happend in 1980-1982 in
-Nordrhein-Westfalen, a territory of germany.
+The file crash.txt contains data from car accidents happened in 1980-1982 in
+Nordrhein-Westfalen, a territory of Germany.
 
 6 variables are listed:
 
@@ -22,8 +22,9 @@ gcrash: good crash: number of accidents not caused by speeding or risky
 	driving with combination (age, sex, alc, street). 
 
 crash.R reads the data, defines a table and saves the data in the database
-system. The we can "ask questions" using SQL-statements. Of cource, all this
-can be done with dataframes, but not more complex things like joins etc. One
+system. Then we can "ask questions" using SQL-statements. Of course, all this
+can be done with dataframes, but more complex things like joins etc. not. One
 should look at the comments in crash.R to see RmSQL working.
 
- 
+You will have to create an empty database "crash" before running the
+example. This is done by $MSQL_PATH/bin/msqladmin create crash 

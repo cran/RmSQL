@@ -1,10 +1,10 @@
 # load the library
 
-library("RmSQL");
+library("RmSQL")
 
 # read data from file
 
-dat <- read.table(file="crash.txt", header=T);
+dat <- read.table(file="crash.txt", header=T)
 
 define <- function(mydata)
 {
@@ -12,30 +12,30 @@ define <- function(mydata)
 	# there is an empty db called "crash" available
 	# open a connection to msql2d 
 
-	sock <- msqlConnect("localhost");	# use IP-Adress or DNS-Name if
+	sock <- msqlConnect("localhost")	# use IP-Adress or DNS-Name if
 						# msql2d runs remote
 	
 	# sock contains a handle for the connection
 
 	if (sock < 0)				# if error
 	{
-		print(msqlGetErrMsg());		# print error message
-		stop();				# stop it all
+		print(msqlGetErrMsg())		# print error message
+		stop()				# stop it all
 	}
 	
 	# select a database
 
-	stat <- msqlSelectDB(sock, "crash");
+	stat <- msqlSelectDB(sock, "crash")
 	
 	if (stat < 0)				# if error
 	{
-		print(msqlGetErrMsg());
-		stop();
+		print(msqlGetErrMsg())
+		stop()
 	}
 	
 	# create table definition statement
 
-	query <- c("CREATE TABLE crashtab ( age int, sex int, alc int, street int, bcrash int, gcrash int)");
+	query <- c("CREATE TABLE crashtab ( age int, sex int, alc int, street int, bcrash int, gcrash int)")
 
 	# send it to the server
 
@@ -43,8 +43,8 @@ define <- function(mydata)
 
 	if (stat < 0)				# if error
 	{
-		print(msqlGetErrMsg());
-		stop();
+		print(msqlGetErrMsg())
+		stop()
 	}
 
 	# ok, now we can send our data to the server
@@ -53,20 +53,20 @@ define <- function(mydata)
 	{
 		# create insert statements
 
-		query <- "INSERT INTO crashtab VALUES (";
+		query <- "INSERT INTO crashtab VALUES ("
 		
 		for (j in c(1:ncol(mydata)))
 		{
-			query <- paste(query, as.character(mydata[i,j]));
+			query <- paste(query, as.character(mydata[i,j]))
 			if (j < ncol(mydata))
 			{
-				query <- paste(query, ",");
+				query <- paste(query, ",")
 			} else {
-				query <- paste(query, ")");
+				query <- paste(query, ")")
 			}
 		}
 
-		print(query);
+		print(query)
 
 		# send it to the server
 
@@ -74,12 +74,12 @@ define <- function(mydata)
 
 		if (stat < 0)			# if error
 		{
-			print(msqlGetErrMsg());
-			stop();
+			print(msqlGetErrMsg())
+			stop()
 		}
 	}
 
-	msqlClose(sock);			# close the connection
+	msqlClose(sock)			# close the connection
 
 	# if everything is ok, our data is now available as a relation
 }
@@ -88,25 +88,25 @@ select <- function(query)
 {
 	# open a connection to msql2d 
 
-	sock <- msqlConnect("localhost");	# use IP-Adress or DNS-Name if
+	sock <- msqlConnect("localhost")	# use IP-Adress or DNS-Name if
 						# msql2d runs remote
 	
 	# sock contains a handle for the connection
 
 	if (sock < 0)				# if error
 	{
-		print(msqlGetErrMsg());		# print error message
-		stop();				# stop it all
+		print(msqlGetErrMsg())		# print error message
+		stop()				# stop it all
 	}
 
 	# select a database
 	
-	stat <- msqlSelectDB(sock, "crash");
+	stat <- msqlSelectDB(sock, "crash")
 	
 	if (stat < 0)				# if error
 	{
-		print(msqlGetErrMsg());
-		stop();
+		print(msqlGetErrMsg())
+		stop()
 	}
 	
 	# send the query to the server
@@ -115,80 +115,81 @@ select <- function(query)
 	
 	if (stat < 0)				# if error
 	{
-		print(msqlGetErrMsg());
-		stop();
+		print(msqlGetErrMsg())
+		stop()
 	}
 
 	if (stat > 0)				# if there is anything
 	{
 
-		msqlStoreResult();		# make results available
+		msqlStoreResult()		# make results available
 
 		# if no error occured, stat contains the number of rows returned
 	
-		rows <- stat;			# alternative:  msqlNumRows()
-		cols <- msqlNumFields();	# number of fields
+		rows <- stat			# alternative:  msqlNumRows()
+		cols <- msqlNumFields()	# number of fields
 	
 		if (cols$stat < 0)		# if error
 		{
-			print(msqlGetErrMsg());
-			stop();
+			print(msqlGetErrMsg())
+			stop()
 		}
 
-		cols <- cols$num;
+		cols <- cols$num
 		
 		# get all the attribute names 
 
-		attrnames <- c(msqlFetchField())$attr[1];		
+		attrnames <- c(msqlFetchField())$attr[1]		
 		if (cols > 1)
 		{
 			for (i in c(2:cols))
 			{
-				attrnames <- c(attrnames, msqlFetchField()$attr[1]);
+				attrnames <- c(attrnames, msqlFetchField()$attr[1])
 			}
 		}	
 
 		# now get the data
 
-		cur <- msqlFetchRow();		# get the first row
+		cur <- msqlFetchRow()		# get the first row
 		if (cur$stat < 0)		# if error
 		{
-			print(msqlGetErrMsg());
-			stop();
+			print(msqlGetErrMsg())
+			stop()
 		}
 
-		dbdata <- cur$data;
+		dbdata <- cur$data
 
 		if (rows > 1)
 		{
 			for (i in c(2:rows))
 			{
-				cur <- msqlFetchRow();		# get the next row
+				cur <- msqlFetchRow()		# get the next row
 				if (cur$stat < 0)		
 				{
-					print(msqlGetErrMsg());
-					stop();
+					print(msqlGetErrMsg())
+					stop()
 				}
 				# bind the data into a matrix
 		
-				dbdata <- rbind(dbdata,cur$data);
+				dbdata <- rbind(dbdata,cur$data)
 			}
 		}
 
 		# return the data as data.frame 
 
-		dbdata <- as.data.frame(dbdata);
+		dbdata <- as.data.frame(dbdata)
 
 		# set the names 
-		colnames(dbdata) <- attrnames;
+		colnames(dbdata) <- attrnames
 	
-		return(dbdata);
+		return(dbdata)
 	}
 
 	# return "null" if no data matching the query is available
 	
-	return("null");
+	return("null")
 }
 
-define(dat);
-sdata <- select("select alc from crashtab where sex = 0 AND age = 1");
+define(dat)
+sdata <- select("select alc, sex, age  from crashtab where sex = 0 AND age = 1")
+print(sdata)

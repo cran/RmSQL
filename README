@@ -1,13 +1,9 @@
 'RmSQL' is an R package which implements an interface between the R
-language and the mSQL database system and is Copyright (C) 1999 by 
-Torsten Hothorn <hothorn@amadeus.statistik.uni-dortmund.de>
+language and the mSQL database system and is Copyright (C) 1999, 2000 by 
+Torsten Hothorn <Torsten.Hothorn@rzmail.uni-erlangen.de>
 
-*************************************************************************
-
-THIS IS ALPHA 1 CODE. Detailed testing has to be done and there is still 
-a lot of functionality missing. 
-
-*************************************************************************
+This is very basic interface and more or less just a wrapper to the mSQL
+API, useful mainly for programming.  
 
 'RmSQL' is free software; you can redistribute  it and/or modify it under 
 the terms of the GNU General Public License as published by the Free 
@@ -40,12 +36,11 @@ GPL licenced but free of charge for universities and noncommercial orgs.
 2. install mSQL (see mSQL README and manual)
 
 3. if server and client are on the same host, unpack RmSQL-0.1.tar.gz in 
-$RHOME/library/, check ./RmSQL/src/Makefile for your mSQL-path and type 
-"R INSTALL RmSQL" as root. This should make RmSQL correct (make sure that
-SHLIBFLAGS are set correct) 
+$RHOME/library/, check ./RmSQL/src/Makevars for your mSQL-path and type 
+"R INSTALL RmSQL" as root. This should make RmSQL correct.
 
-4. if not, copy the mSQL include and lib dirs on the client and change the
-Makefile
+4. if not, tell ./RmSQL/src/Makevars where to search for libmsql.a and
+msql.h (and copy them on the client machine). 
 
 5. to run the crash example, create a database called "crash" by
 ">$MSQL_HOME/bin/msqladmin create crash" , copy ./RmSQL/Example/* into your

@@ -1,4 +1,21 @@
 \name{RmSQL}
+\alias{msqlConnect}
+\alias{msqlSelectDB}
+\alias{msqlQuery}
+\alias{msqlStoreResult}
+\alias{msqlFetchRow}
+\alias{msqlFreeResult}
+\alias{msqlDataSeek}
+\alias{msqlNumRows}
+\alias{msqlFetchField}
+\alias{msqlFieldSeek}
+\alias{msqlNumFields}
+\alias{msqlClose}
+\alias{msqlGetErrMsg}
+\alias{msqlListDBs}
+\alias{msqlListTables}
+\alias{msqlListFields}
+\alias{msqlListIndex}
 \title{Accessing mSQL2.0 databases from R}
 \usage{
 msqlConnect(host)
@@ -28,14 +45,14 @@ msqlListIndex(sock, tableName, index)
 }
 \description{	
     \code{RmSQL} implements a low-level interface between \R and mSQL 2.0 by
-    Hughes Technologies. mSQL is a relational database managment system.
+    Hughes Technologies. mSQL is a relational database management system.
     With \code{RmSQL}, the power of SQL is available within \R. The mSQL
-    homepage is available under \link{http://www.Hughes.com.au}.
+    homepage is available under \url{http://www.Hughes.com.au}.
 }
 \details{
-\code{msqlConnect(host)} establishs a connection to the msql2d at
+\code{msqlConnect(host)} establishes a connection to the msql2d at
 \code{host}. It returns a integer, which is used as handle if no error
-occured, -1 otherwise.
+occurred, -1 otherwise.
 
 \code{msqlSelectDB(sock, dbName)} selects the database \code{dbName} and
 requires the handle \code{sock}, returned by \code{msqlConnect(host)}. 
@@ -43,7 +60,7 @@ requires the handle \code{sock}, returned by \code{msqlConnect(host)}.
 \code{msqlQuery(sock, query)} sends the SQL statement \code{query} to the
 msql2d, using connection \code{sock}, returned by \code{msqlConnect(host)}.
 A integer containing the number of available rows is returned, -1 is
-returned if an error occured. NOTE: query not only means SELECT statements
+returned if an error occurred. NOTE: query not only means SELECT statements
 but also UPDATE, CREATE TABLE, DELETE etc. 
 
 \code{msqlStoreResult()} stores data returned by a SELECT query. This must
@@ -57,10 +74,10 @@ Remember to call \code{msqlFreeResult()} when the data is no longer needed.
 \code{msqlFreeResult()}: When data is no longer needed, free the memory.
 
 \code{msqlDataSeek(pos)} set the cursor to row number \code{pos}. Returns an
-integer, which is -1 if an error occured.
+integer, which is -1 if an error occurred.
 
 \code{msqlNumRows()} returns the number of rows available and an integer,
-which is -1 if an error occured (e.g. no data available).
+which is -1 if an error occurred (e.g. no data available).
 
 \code{msqlFetchField()} returns the field name, table name, type of field as
 integer and an integer indicating an error by the value -1.
@@ -82,7 +99,7 @@ type: \cr
 \code{msqlConnect(host)}. Nothing is returned.
 
 \code{msqlGetErrMsg()} returns a character string with the error message, if
-an error occured.
+an error occurred.
 
 The following functions are related to database and relation schemes.
 
@@ -110,9 +127,9 @@ source and free of charge for universities and noncommercial organisations.
 
 }
 
-\author{Torsten Hothorn, <hothorn@amadeus.statistik.uni-dortmund.de>}
+\author{Torsten Hothorn, <Torsten.Hothorn@rzmail.uni-erlangen.de>}
 \examples{
-see ./RmSQL/Example/crash.R
+# see ./RmSQL/Example/crash.R, you need a running msql2d
 }
 
 \keyword{database, SQL}
